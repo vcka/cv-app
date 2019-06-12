@@ -12,10 +12,12 @@ import java.util.Objects;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@SequenceGenerator(name="seq", initialValue=1, allocationSize=2)
 public class Person {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq")
+    private Long id = 1L;
 
     @NotEmpty
     private String name;

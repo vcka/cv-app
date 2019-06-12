@@ -19,8 +19,8 @@ public class PersonController {
     }
 
     @GetMapping("info")
-    public Iterable<Person> getPerson() {
-        return personRepository.findAll();
+    public Person getPerson() {
+        return personRepository.findById(1L).get();
     }
 
     @PostMapping("info")
