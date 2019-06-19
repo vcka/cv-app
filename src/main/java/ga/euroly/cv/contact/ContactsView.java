@@ -14,4 +14,6 @@ public class ContactsView {
     private String value;
 
     private ContactsType contactsType;
+
+    private String link;
 }

@@ -18,7 +18,7 @@ public class ContactService {
     }
 
     private ContactsView mapToView(Contacts contacts){
-        return new ContactsView(contacts.getId(), contacts.getValue(),contacts.getContactsType());
+        return new ContactsView(contacts.getId(), contacts.getValue(),contacts.getContactsType(),contacts.getLink());
     }
 
     private Contacts mapFromView(ContactsView contactsView){

@@ -4,6 +4,7 @@ public enum ContactsType {
 
     EMAIL,
     PHONE,
+    CITY,
+    GITHUB,
     LINKEDIN
-
 }

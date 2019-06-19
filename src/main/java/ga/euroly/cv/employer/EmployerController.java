@@ -3,6 +3,7 @@ package ga.euroly.cv.employer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,12 +27,12 @@ public class EmployerController {
     }
 
     @PostMapping("new-employer")
-    public void addEmployer(@RequestBody EmployerView employerView){
+    public void addEmployer(@Valid @RequestBody EmployerView employerView){
         repository.save(mapToEmployer(employerView));
     }
 
     @PostMapping("new-activity/{id}")
-    public void addActivity(@PathVariable Long id, @RequestBody ActivityView activityView){
+    public void addActivity(@PathVariable Long id,@RequestBody ActivityView activityView){
         Activity activity = mapToActivity(activityView);
         Employer employer = repository.findById(id)
                 .orElseThrow((() -> new IllegalArgumentException("Wrong employer ID.")));
