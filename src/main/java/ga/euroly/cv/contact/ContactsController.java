@@ -6,10 +6,13 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/contacts")
+@CrossOrigin("*")
 public class ContactsController {
 
     private final ContactService contactService;
@@ -18,6 +21,7 @@ public class ContactsController {
     public ContactsController(ContactService contactService) {
         this.contactService = contactService;
     }
+
     @PostMapping("add")
     public Contacts createInfo(@RequestBody ContactsView contactsView){
         return contactService.save(contactsView);
@@ -26,6 +30,11 @@ public class ContactsController {
     @GetMapping("show")
     public List<ContactsView> showContacts(){
         return contactService.getContactsView();
+    }
+
+    @GetMapping("types")
+    public List<ContactsType> getContactTypes(){
+        return Arrays.asList(ContactsType.values());
     }
 
     @ExceptionHandler({EmptyResultDataAccessException.class, NotFoundException.class})

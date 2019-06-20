@@ -16,19 +16,17 @@ public class Contacts {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+//    @NotEmpty
     private String value;
 
-    @NotEmpty
+//    @NotEmpty
     private String link;
 
     private ContactsType contactsType;
 
-    public Contacts(String value, ContactsType contactsType) {
+    public Contacts(String value, ContactsType contactsType, String link) {
         this.value = value;
         this.contactsType = contactsType;
+        this.link = link;
     }
-
-    //    @ManyToOne
-//    private Person person;
 }

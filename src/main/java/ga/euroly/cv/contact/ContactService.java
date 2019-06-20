@@ -22,7 +22,7 @@ public class ContactService {
     }
 
     private Contacts mapFromView(ContactsView contactsView){
-        return new Contacts(contactsView.getValue(), contactsView.getContactsType());
+        return new Contacts(contactsView.getValue(), contactsView.getContactsType(), contactsView.getLink());
     }
 
     public List<ContactsView> getContactsView(){
