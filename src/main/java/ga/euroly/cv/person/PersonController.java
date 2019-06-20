@@ -18,16 +18,19 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
+    @CrossOrigin("*")
     @GetMapping("info")
     public Person getPerson() {
         return personRepository.findById(1L).get();
     }
 
+    @CrossOrigin("*")
     @PostMapping("info")
     public Person createInfo(@RequestBody Person person){
         return personRepository.save(person);
     }
 
+    @CrossOrigin("*")
     @PutMapping("info/{id}")
     public ResponseEntity<Person> updatePersonByID(@PathVariable Long id, @RequestBody Person person){
         Optional<Person> personUpdated = personRepository.findById(id);
