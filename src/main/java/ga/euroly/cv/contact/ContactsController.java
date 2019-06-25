@@ -22,8 +22,14 @@ public class ContactsController {
         this.contactService = contactService;
     }
 
+    @PutMapping("update/{id}")
+    public ContactsView updateContact (@PathVariable Long id, @RequestBody ContactsView contactsView) {
+        ContactsView contactsToUpdate = contactService.findByID(id);
+        return contactService.save(contactsToUpdate);
+    }
+
     @PostMapping("add")
-    public Contacts createInfo(@RequestBody ContactsView contactsView){
+    public ContactsView createInfo(@RequestBody ContactsView contactsView){
         return contactService.save(contactsView);
     }
 
@@ -32,7 +38,7 @@ public class ContactsController {
         return contactService.getContactsView();
     }
 
-    @GetMapping("types")
+    @GetMapping("type")
     public List<ContactsType> getContactTypes(){
         return Arrays.asList(ContactsType.values());
     }

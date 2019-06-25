@@ -25,6 +25,10 @@ public class ContactService {
         return new Contacts(contactsView.getValue(), contactsView.getContactsType(), contactsView.getLink());
     }
 
+    public ContactsView findByID(Long id){
+        return mapToView(repository.findById(id).orElseThrow(()-> new IllegalArgumentException("Not found.")));
+    }
+
     public List<ContactsView> getContactsView(){
         return repository.findAll()
                 .stream()
@@ -32,8 +36,8 @@ public class ContactService {
                 .collect(Collectors.toList());
     }
 
-    public Contacts save(ContactsView contactsView) {
-        return repository.save(mapFromView(contactsView));
+    public ContactsView save(ContactsView contactsView) {
+        return mapToView(repository.save(mapFromView(contactsView)));
     }
 
 
