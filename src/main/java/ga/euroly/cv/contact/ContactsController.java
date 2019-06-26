@@ -6,7 +6,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,9 +22,14 @@ public class ContactsController {
     }
 
     @PutMapping("update/{id}")
-    public ContactsView updateContact (@PathVariable Long id, @RequestBody ContactsView contactsView) {
+    public ContactsView updateContact(@PathVariable Long id, @RequestBody ContactsView contactsView) {
         ContactsView contactsToUpdate = contactService.findByID(id);
         return contactService.save(contactsToUpdate);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public HttpStatus deleteContact(@PathVariable Long id){
+        return contactService.delete(id);
     }
 
     @PostMapping("add")

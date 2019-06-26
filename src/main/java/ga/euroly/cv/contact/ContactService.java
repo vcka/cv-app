@@ -2,6 +2,7 @@ package ga.euroly.cv.contact;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +39,11 @@ public class ContactService {
 
     public ContactsView save(ContactsView contactsView) {
         return mapToView(repository.save(mapFromView(contactsView)));
+    }
+
+    public HttpStatus delete(Long id){
+        repository.deleteById(id);
+        return HttpStatus.OK;
     }
 
 
