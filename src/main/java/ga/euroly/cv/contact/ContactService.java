@@ -46,5 +46,9 @@ public class ContactService {
         return HttpStatus.OK;
     }
 
+    public ContactsView update(ContactsView contactsView){
+//        ContactsView contacts = mapToView(repository.getOne(id));
+        return mapToView(repository.save(mapFromView(contactsView)));
+    }
 
 }
